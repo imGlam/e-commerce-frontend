@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Passions+Conflict&family=Poppins:wght@200;300;400;500;600;700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.container {
+    height: 40px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.items {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 2rem;
+}
+
+.title {
+    font-size: 3.4rem;
+    letter-spacing: 1rem;
+    font-weight: 600;
+    font-family: 'Passions Conflict', cursive;
+}
+
+.icon {
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+        color: white;
+    }
+}

@@ -1,0 +1,25 @@
+.container {
+    display: inline-flex;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    cursor: pointer;
+
+    &:hover .title {
+        color: #c7572b;
+    }
+}
+
+.icon {
+    color: #c7572b;
+    padding: 10px;
+}
+
+.title {
+    font-size: 2.2rem;
+    text-decoration: none;
+    color: var(--text-color);
+}

@@ -1,0 +1,56 @@
+.container {
+    width: 400px;
+    height: 500px;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+}
+.name {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.price {
+    color: orangered;
+    padding: 18px 20px;
+}
+.description {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+.color {
+}
+.amount {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.amount-selection {
+    width: 100px;
+    height: 30px;
+    margin-left: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.input {
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+.action {
+    display: flex;
+    margin-top: 18px;
+}

@@ -1,0 +1,36 @@
+.container {
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 14px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.items-container {
+    width: 200px;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+
+    &:hover .title {
+        color: blueviolet;
+    }
+}
+
+.image {
+    height: 60px;
+    width: 60px;
+}
+
+.title {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 8px 18px;
+}
+
+.separate {
+    border-right: 1px solid #ccc;
+}
