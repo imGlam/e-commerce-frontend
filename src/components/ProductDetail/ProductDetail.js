@@ -3,6 +3,7 @@ import styles from './ProductDetail.module.scss';
 
 import ProductDescription from './ProductDescription';
 import ProductSwiper from './ProductSwiper';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 

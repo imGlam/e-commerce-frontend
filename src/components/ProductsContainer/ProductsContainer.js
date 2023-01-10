@@ -20,7 +20,7 @@ function ProductsContainer({ name, children }) {
 }
 
 ProductsContainer.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     children: PropTypes.node.isRequired,
 };
 

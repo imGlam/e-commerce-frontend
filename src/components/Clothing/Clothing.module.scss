@@ -1,0 +1,22 @@
+.container { 
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image { 
+    width: 500px;
+    height: auto;
+}
+
+.name { 
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.price { 
+    color: red;
+    font-size: 1.8rem;
+}

@@ -1,4 +1,5 @@
 import DefaultLayout from '../layouts/DefaultLayout';
+import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import Backpacks from '../pages/Collections/Backpacks';
 import CrossbodyBags from '../pages/Collections/CrossbodyBags';
@@ -34,13 +35,18 @@ const publicRoutes = [
         layout: DefaultLayout,
     },
     {
-        path: '/products/backpack',
+        path: '/product/:name',
         component: ProductBuy,
         layout: DefaultLayout,
     },
     {
-        path: '/checkout',
+        path: '/checkout/:name',
         component: Checkout,
+        layout: DefaultLayout,
+    },
+    {
+        path: '/cart',
+        component: Cart,
         layout: DefaultLayout,
     },
 ];

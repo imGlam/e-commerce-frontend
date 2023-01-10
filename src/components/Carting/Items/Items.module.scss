@@ -1,0 +1,60 @@
+.container  {
+
+}
+
+.td {
+    padding: 30px 50px;
+}
+
+.item-info { 
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 0 0 ;
+}
+
+.image { 
+    width: 69px;
+    height: 69px;
+    margin-right: 10px;
+}
+
+.quantity-container {
+    background-color: white;
+    height: 24px;
+}
+
+.input { 
+    width: 30px;
+    height: 100%;
+    text-align: center;
+}
+
+.icon { 
+    padding: 0px 10px ;
+    cursor: pointer;
+}
+
+.count-btn { 
+    height: 100%;
+    border: none;
+
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trash-icon 
+{
+    color: white;
+    cursor: pointer;
+    
+    &:hover { 
+        color:orangered;
+    }
+}
+

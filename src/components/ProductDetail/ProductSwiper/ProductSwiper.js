@@ -4,10 +4,22 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/bundle';
+import { useContext, useEffect, useState } from 'react';
+import { nameContext } from '../../../pages/ProductBuy';
 
 const cx = classNames.bind(styles);
 
 function ProductSwiper() {
+    const name = useContext(nameContext);
+    const [product, setProduct] = useState({});
+
+    useEffect(() => {
+        fetch(`/api/find/${name}`)
+            .then((res) => res.json())
+            .then((res) => setProduct(res))
+            .catch((err) => console.log(err));
+    }, [name]);
+
     return (
         <div className={cx('container')}>
             <Swiper
@@ -22,22 +34,7 @@ function ProductSwiper() {
                 keyboard={true}
             >
                 <SwiperSlide>
-                    <img
-                        className={cx('balo-image')}
-                        src="https://product.hstatic.net/1000365849/product/5_b9c30dec91dd4107ae26f4c89a456fc9_master.jpg"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className={cx('balo-image')}
-                        src="https://product.hstatic.net/1000365849/product/3_fdeb66db64bb4efaa8852e44c5b195d1_master.jpg"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className={cx('balo-image')}
-                        src="https://product.hstatic.net/1000365849/product/6_05bcde1820fa49d6a387a88bdfe46d84_master.jpg"
-                    />
+                    <img src={product.image} className={cx('balo-image')} />
                 </SwiperSlide>
             </Swiper>
         </div>
