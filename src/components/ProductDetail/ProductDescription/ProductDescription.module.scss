@@ -1,56 +1,81 @@
 .container {
-    width: 400px;
-    height: 500px;
-    background-color: var(--background-color);
+    width: 1000px;
+    background-color: white;
     display: flex;
     flex-direction: column;
+    border: 1px solid #ccc;
 }
+
 .name {
-    font-size: 1.2rem;
     text-align: center;
     padding: 10px 0;
     border-bottom: 1px solid #ccc;
-}
-.price {
-    color: orangered;
-    padding: 18px 20px;
-}
-.description {
-    font-size: 1.6rem;
-    color: var(--text-color);
-}
-.color {
-}
-.amount {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    font-size: 18px;
-    color: var(--text-color);
+    margin: 0 14px 14px 14px;
 }
 
-.amount-selection {
-    width: 100px;
+.content { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info { 
+    width: 580px;
+    margin-left: 14px;
+  
+}
+
+.description {
+    margin: 18px 0;
+    font-size: 1.8rem;
+}
+.separate  {
+    width: 1px;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin-bottom: 14px;
+}
+
+.order-placement { 
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-container { 
+    width: 200px;
     height: 30px;
-    margin-left: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 28px;
+
 }
 
-.icon {
-    background-color: transparent;
-    color: var(--text-color);
+.amount {
+    font-size: 1.4rem;
+    margin-right: 14px;
 }
 
-.input {
-    width: 50px;
-    height: 30px;
+.count-btn { 
     border: none;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
+    padding: 8px ;
+    cursor: pointer;
 }
-.action {
+.input {
+    width: 58px;
+    height: 100%;
+    text-align: center;
+}
+
+.cart { 
     display: flex;
-    margin-top: 18px;
+
+}
+
+.cart-btn {
+    width: 120px;
+    
 }

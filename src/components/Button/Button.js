@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ className, amount, buy, message, children, cart }) {
+function Button({ className, amount, buy, message, children, cart, onClick, type }) {
     const classes = cx('container', {
         [className]: className,
         amount,
@@ -13,9 +13,10 @@ function Button({ className, amount, buy, message, children, cart }) {
         message,
         cart,
     });
+
     return (
         <div className={cx('container')}>
-            <button className={classes}>
+            <button className={classes} onClick={onClick} type={type}>
                 {children || (
                     <img
                         className={cx('icon')}

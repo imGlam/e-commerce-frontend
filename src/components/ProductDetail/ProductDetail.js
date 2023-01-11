@@ -10,8 +10,12 @@ const cx = classNames.bind(styles);
 function ProductDetail() {
     return (
         <div className={cx('container')}>
-            <ProductSwiper />
-            <ProductDescription />
+            <div className={cx('product-swiper')}>
+                <ProductSwiper />
+            </div>
+            <div className={cx('product-description')}>
+                <ProductDescription />
+            </div>
         </div>
     );
 }

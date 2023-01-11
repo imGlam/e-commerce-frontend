@@ -1,7 +1,11 @@
 .container {
-    background-color: var(--background-color);
     width: 1000px;
-    height: 800px;
+    min-height: 1000px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+}
+
+.product-swiper { 
 }

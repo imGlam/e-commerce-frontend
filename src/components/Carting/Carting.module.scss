@@ -1,4 +1,22 @@
-.container { 
-    background-color: #ccc;
+.container {
+    display: flex;
+    flex-direction: column;
     width: 1000px;
+    min-height: 1000px;
+    background-color:white;
+}
+
+.title {
+    margin : 0 0 14px 260px;
+
+}
+
+.inner {
+    display: flex;
+
+}
+
+.items-container {
+    margin-right: 10px;
+    width: 680px;
 }
