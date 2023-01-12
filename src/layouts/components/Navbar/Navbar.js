@@ -4,14 +4,15 @@ import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/svg-arrow.css';
 
-import { faBagShopping, faBars, faHomeUser } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faBars, faHomeUser, faSignIn, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../../../components/Button';
+import OrderedItem from './OrderedItem';
 
 const cx = classNames.bind(styles);
 
 function Navbar({ to }) {
-    const order = true;
+    const order = false;
     return (
         <div className={cx('container')}>
             <div className={cx('items')}>
@@ -32,7 +33,21 @@ function Navbar({ to }) {
                         render={(attrs) => (
                             <div className={cx('tippy-container')}>
                                 {order ? (
-                                    <h1>yes</h1>
+                                    <div className={cx('cart-with-orders')}>
+                                        <div className={cx('ordered-items')}>
+                                            <span>Ordered items :</span>
+                                        </div>
+                                        <div className={cx('order-items-display')}>
+                                            <OrderedItem />
+                                            <OrderedItem />
+                                            <OrderedItem />
+                                            <OrderedItem />
+                                        </div>
+                                        <Link className={cx('cart-title-container')}>
+                                            <FontAwesomeIcon className={cx('sign-in-btn')} icon={faSignIn} />
+                                            <h3 className={cx('cart-title')}>GIO HANG</h3>
+                                        </Link>
+                                    </div>
                                 ) : (
                                     <div className={cx('no-orders')}>
                                         <h3>No orders</h3>

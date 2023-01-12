@@ -34,16 +34,82 @@
 }
 
 .tippy-container {
-    width: 220px;
+    width: 260px;
     height: auto;
     background-color: white;
     border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     border: 1px solid #ccc;
 }
 
 .no-orders { 
     padding: 10px;
+}
+
+//ordered-items-display
+.cart-with-orders{
+    width: 100%;
+
+}
+
+.ordered-items {
+    transform: translateY(10px);
+    margin-left: 14px;
+}
+
+
+.order-items-display {
+  
+}
+
+.ordered-items-container {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 18px 8px;
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+}
+
+.item-info-container { 
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.image  { 
+    width: 50%;
+    margin: 0 10px;
+}
+
+.delete-btn {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 0;
+    color:  red;
+
+    &:hover {
+        color: #ccc;
+    }
+}
+
+.cart-title-container { 
+    margin-left: 10px;
+    display: flex;
+    align-items: center;  
+    justify-content: end;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.cart-title {
+    padding: 8px ;
+    color: red;
+    text-decoration: none;
+}
+
+
+
+.sign-in-btn {
+    color: red;
 }
