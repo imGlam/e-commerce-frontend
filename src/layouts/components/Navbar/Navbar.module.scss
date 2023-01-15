@@ -82,11 +82,14 @@
     margin: 0 10px;
 }
 
-.delete-btn {
+.trash-btn {
+    border: none;
+    background-color: transparent;
     text-decoration: none;
     margin: 0 10px;
     padding: 10px 0;
     color:  red;
+    cursor: pointer;
 
     &:hover {
         color: #ccc;
@@ -94,11 +97,11 @@
 }
 
 .cart-title-container { 
-    margin-left: 10px;
+    border-top: 1px solid #ccc;
+    margin: 0 14px;
     display: flex;
     align-items: center;  
     justify-content: end;
-    margin-bottom: 10px;
     text-decoration: none;
 }
 
@@ -108,8 +111,38 @@
     text-decoration: none;
 }
 
-
-
 .sign-in-btn {
     color: red;
 }
+
+.quantity-container { 
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input { 
+    width: 32px;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+.count-btn {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+}
+
+.icon {
+    &:hover {
+        color: orangered;
+    }
+}
+
+.iframe {
+    display: none;
+}
+

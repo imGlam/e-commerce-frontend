@@ -3,16 +3,25 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/svg-arrow.css';
+import axios from 'axios';
 
-import { faBagShopping, faBars, faHomeUser, faSignIn, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faBars, faCashRegister, faHomeUser, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../../../components/Button';
 import OrderedItem from './OrderedItem';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Navbar({ to }) {
-    const order = false;
+function Navbar() {
+    const [orderedItems, setOrderedItems] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get('/api/cart')
+            .then((items) => setOrderedItems(items.data))
+            .catch((err) => console.log(err));
+    }, []);
+
     return (
         <div className={cx('container')}>
             <div className={cx('items')}>
@@ -30,22 +39,33 @@ function Navbar({ to }) {
                         interactive
                         offset={[-10, 4]}
                         placement="bottom-start"
+                        hideOnClickOutside={true}
                         render={(attrs) => (
                             <div className={cx('tippy-container')}>
-                                {order ? (
+                                {orderedItems.length ? (
                                     <div className={cx('cart-with-orders')}>
                                         <div className={cx('ordered-items')}>
                                             <span>Ordered items :</span>
                                         </div>
                                         <div className={cx('order-items-display')}>
-                                            <OrderedItem />
-                                            <OrderedItem />
-                                            <OrderedItem />
-                                            <OrderedItem />
+                                            {orderedItems.map((item, index) => (
+                                                <OrderedItem
+                                                    key={index}
+                                                    name={item.name}
+                                                    image={item.image}
+                                                    price={item.price}
+                                                    version={item.color}
+                                                    amount={item.amount}
+                                                />
+                                            ))}
                                         </div>
-                                        <Link className={cx('cart-title-container')}>
+                                        <Link className={cx('cart-title-container')} to="/cart">
                                             <FontAwesomeIcon className={cx('sign-in-btn')} icon={faSignIn} />
                                             <h3 className={cx('cart-title')}>GIO HANG</h3>
+                                        </Link>
+                                        <Link className={cx('cart-title-container')} to="/checkout/items-in-cart">
+                                            <FontAwesomeIcon icon={faCashRegister} className={cx('sign-in-btn')} />
+                                            <h3 className={cx('cart-title')}>THANH TOAN</h3>
                                         </Link>
                                     </div>
                                 ) : (

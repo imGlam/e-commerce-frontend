@@ -10,6 +10,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+}
+
+.image {
+    width: 50%;
+    height: 50%;
 }
 
 .description {
@@ -55,3 +61,138 @@
 .second-td {
     text-align: end;
 }
+
+
+//ordered items container 
+.cart-with-orders{
+    width: 100%;
+
+}
+
+.ordered-items {
+    transform: translateY(10px);
+    margin-left: 14px;
+}
+
+
+.order-items-display {
+  
+}
+
+.ordered-items-container {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 18px 8px;
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+}
+
+.item-info-container { 
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.image  { 
+    width: 50%;
+    margin: 0 10px;
+}
+
+.trash-btn {
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 0;
+    color:  red;
+    cursor: pointer;
+
+    &:hover {
+        color: #ccc;
+    }
+}
+
+.cart-title-container { 
+    border-top: 1px solid #ccc;
+    margin: 0 14px;
+    display: flex;
+    align-items: center;  
+    justify-content: end;
+    text-decoration: none;
+}
+
+.cart-title {
+    padding: 8px ;
+    color: red;
+    text-decoration: none;
+}
+
+.sign-in-btn {
+    color: red;
+}
+
+.quantity-container { 
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input { 
+    width: 32px;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+.count-btn {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    padding: 0 10px;  
+    cursor: pointer;
+}
+
+.icon {
+    
+    &:hover {
+        color: orangered;
+    }
+}
+
+.iframe {
+    display: none;
+}
+
+.code-discount {
+    width: 420px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-discount { 
+    width: 200px;
+    padding: 4px 10px;
+    font-size: 2rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.use-btn {
+    background-color: orangered;
+    color:white;
+    
+    &:hover { 
+        background-color: #ccc;
+    }
+}
+
+.delivery{  
+    width: 420px;
+    font-size: 1.8rem;
+}
+

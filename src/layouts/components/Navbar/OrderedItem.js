@@ -1,32 +1,56 @@
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function OrderedItem() {
+function OrderedItem({ image, name, version, price, amount, quantity }) {
+    const [count, setCount] = useState(1);
+    const addItem = () => {
+        setCount(count + 1);
+    };
+    const removeItem = () => {
+        if (count > 0) {
+            setCount(count - 1);
+        }
+    };
     return (
         <div className={cx('ordered-items-container')}>
             <Link className={cx('item-info-container')}>
-                <img
-                    className={cx('image')}
-                    src="https://product.hstatic.net/1000365849/product/palette_1_718d748a51d54243b1d91b6be737f80f_compact.jpg"
-                />
+                <img className={cx('image')} src={image} alt="logo" />
                 <div className={cx('item-info')}>
-                    <h2>Name</h2>
-                    <span>Version : Black</span>
+                    <h2>{name}</h2>
+                    <span>Version : {version}</span>
                     <br />
-                    <span>Amount : 1</span>
-                    <h2>Price</h2>
+
+                    {quantity ? (
+                        <div className={cx('quantity-container')}>
+                            <span className={cx('amount')}>Amount : </span>
+                            <input className={cx('input')} value={amount} onChange={() => {}} disabled />
+                            <button className={cx('count-btn')} onClick={(e) => removeItem()}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faMinus} />
+                            </button>
+                            <button className={cx('count-btn')} onClick={(e) => addItem()}>
+                                <FontAwesomeIcon className={cx('icon')} icon={faPlus} />
+                            </button>
+                        </div>
+                    ) : (
+                        <span>Amount : {amount}</span>
+                    )}
+                    <h2>{price}</h2>
                 </div>
             </Link>
-            <Link className={cx('delete-btn')}>
-                <FontAwesomeIcon icon={faTrash} />
-            </Link>
+
+            <form target="frame" method="post" action={`/api/cart/delete/${name}?_method=DELETE`}>
+                <button className={cx('trash-btn')}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </button>
+            </form>
+            <iframe name="frame" className={cx('iframe')} />
         </div>
     );
 }
-
 export default OrderedItem;

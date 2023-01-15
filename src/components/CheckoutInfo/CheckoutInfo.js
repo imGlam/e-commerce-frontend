@@ -9,7 +9,9 @@ const cx = classNames.bind(styles);
 function CheckoutInfo() {
     return (
         <div className={cx('container')}>
-            <Link className={cx('logo')} to="/">Huong CLoset</Link>
+            <Link className={cx('logo')} to="/">
+                Huong CLoset
+            </Link>
 
             <h2 className={cx('title')}>Thong tin khach hang</h2>
             <div className={cx('user-info')}>
@@ -18,15 +20,15 @@ function CheckoutInfo() {
                         <input className={cx('input')} placeholder="Ten cua ban" />
                     </div>
                     <div className={cx('input-field')}>
-                        <input className={cx('input')} placeholder="Email" />
-                        <input className={cx('input')} placeholder="So dien thoai" />
+                        <input className={cx('input-email')} placeholder="Email" />
+                        <input className={cx('input-phone-number')} placeholder="So dien thoai" />
                     </div>
                     <div className={cx('input-field')}>
                         <input className={cx('input')} placeholder="So nha va ten duong" />
                     </div>
                     <div className={cx('selection-container')}>
                         <div className={cx('selection-field')}>
-                            <label>Tinh thanh</label>
+                            <label className={cx('label')}>Tinh / Thanh</label>
                             <select className={cx('selection')} name="province">
                                 <option value="">Chon tinh thanh</option>
                                 <option value="HCM">Ho Chi Minh</option>
@@ -34,7 +36,7 @@ function CheckoutInfo() {
                             </select>
                         </div>
                         <div className={cx('selection-field')}>
-                            <label>Tinh thanh</label>
+                            <label className={cx('label')}>Quan / Huyen</label>
                             <select className={cx('selection')} name="province">
                                 <option value="">Chon tinh thanh</option>
                                 <option value="HCM">Ho Chi Minh</option>
@@ -42,7 +44,7 @@ function CheckoutInfo() {
                             </select>
                         </div>
                         <div className={cx('selection-field')}>
-                            <label>Tinh thanh</label>
+                            <label className={cx('label')}>Phuong / Xa</label>
                             <select className={cx('selection')} name="province">
                                 <option value="">Chon tinh thanh</option>
                                 <option value="HCM">Ho Chi Minh</option>

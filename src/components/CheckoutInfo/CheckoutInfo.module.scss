@@ -7,6 +7,8 @@
 }
 
 .logo {
+    width: 128px;   
+    padding: 10px 0;
     text-decoration: none;
     font-size: 2rem;
     color: var(--text-color);
@@ -39,27 +41,80 @@
     }
 }
 
+.input-email { 
+    margin-top: 10px;
+    margin-top: 10px;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+
+    &:focus {
+        border: 2px solid orangered;
+    }
+
+}
+
+.input-phone-number {
+    margin-top: 10px;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+
+    &:focus {
+        border: 2px solid orangered;
+    }
+}
+
 .selection-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
     font-size: 1.4rem;
 }
 
 .selection-field {
+    position: relative;
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: white;
     border-radius: 4px;
     border: 2px solid #ccc;
+
+    &::after {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDIxIDE5Ij48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMDAwIj48Zz48cGF0aCBkPSJNMCAwaDF2MTlIMFYweiIgaWQ9IlNoYXBlIiBmaWxsLW9wYWNpdHk9Ii4xNSIvPjxwYXRoIGQ9Ik0xMSA4aDEwbC01IDUtNS01eiIgZmlsbC1vcGFjaXR5PSIuNSIvPjwvZz48L2c+PC9nPjwvc3ZnPg==),none;
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        pointer-events: none;
+    }
+}
+
+.label { 
+    position: absolute;
+    top: 1px;
+    left: 10px;
+    color: #999;
 }
 
 .selection {
     font-size: 1.4rem;
-    padding-top: 5px;
+    padding: 20px 10px 4px 10px;
     outline: none;
     border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .action {
@@ -88,4 +143,8 @@
     &:hover {
         background-color: antiquewhite;
     }
+}
+
+.select-btn{
+    width: 50px;
 }

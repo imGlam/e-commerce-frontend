@@ -6,33 +6,15 @@ import Button from '../../Button';
 import { nameContext } from '../../../pages/ProductBuy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function ProductDescription() {
-    const localstorage = 'bumber';
     const name = useContext(nameContext);
+
     const [product, setProduct] = useState({});
     const [count, setCount] = useState(1);
-
-    const addItem = () => {
-        setCount(count + 1);
-    };
-    const removeItem = () => {
-        setCount(count - 1);
-    };
-
-    useEffect(() => {
-        const newcount = JSON.parse(window.localStorage.getItem(localstorage));
-        if (newcount != 1) {
-            setCount(newcount);
-        }
-    }, []);
-
-    useEffect(() => {
-        window.localStorage.setItem(localstorage, count);
-    }, [count]);
+    const [lastViewedProduct, setLastViewedProduct] = useState([]);
 
     useEffect(() => {
         fetch(`/api/find/${name}`)
@@ -41,11 +23,25 @@ function ProductDescription() {
             .catch((err) => console.log(err));
     }, [name]);
 
-    const handleSubmit = () => {
-        console.log('submitted');
-        // formSubmit.submit();
+    const addItem = () => {
+        setCount(count + 1);
     };
-
+    const removeItem = () => {
+        if (count > 0) {
+            setCount(count - 1);
+        }
+    };
+    useEffect(() => {
+        if (product._id) {
+            window.localStorage.setItem(product._id, count);
+        }
+    }, [count]);
+    useEffect(() => {
+        const newcount = JSON.parse(window.localStorage.getItem(product._id));
+        if (newcount !== 1 && newcount !== null) {
+            setCount(newcount);
+        }
+    }, []);
     return (
         <div className={cx('container')}>
             <div className={cx('name')}>
@@ -79,16 +75,26 @@ function ProductDescription() {
                         </button>
                     </div>
                     <div className={cx('cart')}>
-                        <Link>
-                            <Button cart className={cx('cart-btn')}>
+                        <form target="frame" method="post" action={`/api/cart/add/${name}?q=${count}`}>
+                            <Button
+                                cart
+                                className={cx('cart-btn')}
+                                type="submit"
+                                onClick={(e) => {
+                                    // window.localStorage.setItem(name, JSON.stringify([product]));
+                                    setLastViewedProduct((prev) => [...prev, name]);
+                                }}
+                            >
                                 Them vao vo
                             </Button>
-                        </Link>
-                        <Link>
-                            <Button buy className={cx('cart-btn')}>
+                        </form>
+
+                        <form method="GET" action={`/api/find/${product.name}`}>
+                            <Button buy className={cx('cart-btn')} type="submit">
                                 Mua ngay
                             </Button>
-                        </Link>
+                        </form>
+                        <iframe name="frame" className={cx('iframe')}></iframe>
                     </div>
                 </div>
             </div>
