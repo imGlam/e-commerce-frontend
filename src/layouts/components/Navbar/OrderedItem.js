@@ -1,13 +1,16 @@
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ShoppingCartContext } from '../../../contexts/ShoppingCartContext';
 import styles from './Navbar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function OrderedItem({ image, name, version, price, amount, quantity }) {
+function OrderedItem({ id, image, name, version, price, amount, quantity }) {
+    const cart = useContext(ShoppingCartContext);
+
     const [count, setCount] = useState(1);
     const addItem = () => {
         setCount(count + 1);
@@ -40,16 +43,15 @@ function OrderedItem({ image, name, version, price, amount, quantity }) {
                     ) : (
                         <span>Amount : {amount}</span>
                     )}
-                    <h2>{price}</h2>
+                    <h3>Price : {price}</h3>
                 </div>
             </Link>
 
-            <form target="frame" method="post" action={`/api/cart/delete/${name}?_method=DELETE`}>
-                <button className={cx('trash-btn')}>
-                    <FontAwesomeIcon icon={faTrash} />
-                </button>
-            </form>
-            <iframe name="frame" className={cx('iframe')} />
+            {/* <form method="post" action={`/api/cart/delete/${name}?_method=DELETE`}> */}
+            <button className={cx('trash-btn')} onClick={(e) => cart.deleteFromCart(id)}>
+                <FontAwesomeIcon icon={faTrash} />
+            </button>
+            {/* </form> */}
         </div>
     );
 }

@@ -6,15 +6,16 @@ import Button from '../../Button';
 import { nameContext } from '../../../pages/ProductBuy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { ShoppingCartContext } from '../../../contexts/ShoppingCartContext';
+import useLocalStorage from '../../../hooks/useLocalStorage';
 
 const cx = classNames.bind(styles);
 
 function ProductDescription() {
     const name = useContext(nameContext);
-
+    const cart = useContext(ShoppingCartContext);
     const [product, setProduct] = useState({});
-    const [count, setCount] = useState(1);
-    const [lastViewedProduct, setLastViewedProduct] = useState([]);
+    const productQuantity = cart.getProductsQuantity(product._id);
 
     useEffect(() => {
         fetch(`/api/find/${name}`)
@@ -23,25 +24,6 @@ function ProductDescription() {
             .catch((err) => console.log(err));
     }, [name]);
 
-    const addItem = () => {
-        setCount(count + 1);
-    };
-    const removeItem = () => {
-        if (count > 0) {
-            setCount(count - 1);
-        }
-    };
-    useEffect(() => {
-        if (product._id) {
-            window.localStorage.setItem(product._id, count);
-        }
-    }, [count]);
-    useEffect(() => {
-        const newcount = JSON.parse(window.localStorage.getItem(product._id));
-        if (newcount !== 1 && newcount !== null) {
-            setCount(newcount);
-        }
-    }, []);
     return (
         <div className={cx('container')}>
             <div className={cx('name')}>
@@ -66,35 +48,63 @@ function ProductDescription() {
                 <div className={cx('order-placement')}>
                     <div className={cx('quantity-container')}>
                         <h3 className={cx('amount')}>So luong :</h3>
-                        <button className={cx('count-btn')} onClick={(e) => removeItem()}>
+                        <button
+                            className={cx('count-btn')}
+                            onClick={(e) => {
+                                cart.removeOneFromCart(
+                                    product._id,
+                                    product.name,
+                                    product.description,
+                                    product.image,
+                                    product.price,
+                                    product.size,
+                                );
+                            }}
+                        >
                             <FontAwesomeIcon className={cx('icon')} icon={faMinus} />
                         </button>
-                        <input className={cx('input')} value={count} onChange={() => {}} />
-                        <button className={cx('count-btn')} onClick={(e) => addItem()}>
+                        <input className={cx('input')} value={productQuantity} onChange={() => {}} />
+                        <button
+                            className={cx('count-btn')}
+                            onClick={(e) => {
+                                cart.addOneToCart(
+                                    product._id,
+                                    product.name,
+                                    product.description,
+                                    product.image,
+                                    product.price,
+                                    product.size,
+                                );
+                            }}
+                        >
                             <FontAwesomeIcon className={cx('icon')} icon={faPlus} />
                         </button>
                     </div>
                     <div className={cx('cart')}>
-                        <form target="frame" method="post" action={`/api/cart/add/${name}?q=${count}`}>
-                            <Button
-                                cart
-                                className={cx('cart-btn')}
-                                type="submit"
-                                onClick={(e) => {
-                                    // window.localStorage.setItem(name, JSON.stringify([product]));
-                                    setLastViewedProduct((prev) => [...prev, name]);
-                                }}
-                            >
-                                Them vao vo
-                            </Button>
-                        </form>
+                        {/* <form method="post" action={`/api/cart/add/${name}`}> */}
+                        <Button
+                            cart
+                            className={cx('cart-btn')}
+                            // type="submit"
+                            onClick={(e) =>
+                                cart.submitOneToCart(
+                                    product._id,
+                                    product.name,
+                                    product.description,
+                                    product.image,
+                                    product.price,
+                                )
+                            }
+                        >
+                            Them vao vo
+                        </Button>
+                        {/* </form> */}
 
                         <form method="GET" action={`/api/find/${product.name}`}>
                             <Button buy className={cx('cart-btn')} type="submit">
                                 Mua ngay
                             </Button>
                         </form>
-                        <iframe name="frame" className={cx('iframe')}></iframe>
                     </div>
                 </div>
             </div>

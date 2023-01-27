@@ -8,19 +8,17 @@ import axios from 'axios';
 import { faBagShopping, faBars, faCashRegister, faHomeUser, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import OrderedItem from './OrderedItem';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ShoppingCartContext } from '../../../contexts/ShoppingCartContext';
 
 const cx = classNames.bind(styles);
 
 function Navbar() {
     const [orderedItems, setOrderedItems] = useState([]);
+    const cart = useContext(ShoppingCartContext);
+    const totalPrice = cart.getTotalCost();
 
-    useEffect(() => {
-        axios
-            .get('/api/cart')
-            .then((items) => setOrderedItems(items.data))
-            .catch((err) => console.log(err));
-    }, []);
+    useEffect(() => setOrderedItems(cart.items), [cart.items]);
 
     return (
         <div className={cx('container')}>
@@ -50,15 +48,17 @@ function Navbar() {
                                         <div className={cx('order-items-display')}>
                                             {orderedItems.map((item, index) => (
                                                 <OrderedItem
+                                                    id={item.id}
                                                     key={index}
-                                                    name={item.name}
+                                                    name={item.title}
                                                     image={item.image}
                                                     price={item.price}
-                                                    version={item.color}
-                                                    amount={item.amount}
+                                                    version={item.description}
+                                                    amount={item.quantity}
                                                 />
                                             ))}
                                         </div>
+                                        <h2 className={cx('total')}>Total : {totalPrice}</h2>
                                         <Link className={cx('cart-title-container')} to="/cart">
                                             <FontAwesomeIcon className={cx('sign-in-btn')} icon={faSignIn} />
                                             <h3 className={cx('cart-title')}>GIO HANG</h3>

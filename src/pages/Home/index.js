@@ -3,17 +3,19 @@ import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 
 import Clothing from '../../components/Clothing/Clothing';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
 function Home({}) {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('/api/find')
-            .then((res) => res.json())
-            .then((products) => setProducts(products))
-            .catch((err) => console.error(err));
+        axios
+            .get('/api/find')
+            .then((res) => setProducts(res.data))
+            .catch((err) => console.log(err));
     }, []);
+
     return (
         <div className={cx('container')}>
             {products.map((product, index) => (

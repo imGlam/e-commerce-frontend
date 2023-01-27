@@ -1,3 +1,5 @@
+import Payment from '../components/Payment/Payment';
+import CheckoutLayout from '../layouts/CheckoutLayout/CheckoutLayout';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
@@ -40,9 +42,14 @@ const publicRoutes = [
         layout: DefaultLayout,
     },
     {
+        path: '/checkout/:name/payment',
+        component: Payment,
+        layout: CheckoutLayout,
+    },
+    {
         path: '/checkout/:name',
         component: Checkout,
-        layout: DefaultLayout,
+        layout: CheckoutLayout,
     },
     {
         path: '/cart',

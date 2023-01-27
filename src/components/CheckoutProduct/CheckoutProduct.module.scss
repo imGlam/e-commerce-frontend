@@ -163,36 +163,5 @@
     }
 }
 
-.iframe {
-    display: none;
-}
 
-.code-discount {
-    width: 420px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.input-discount { 
-    width: 200px;
-    padding: 4px 10px;
-    font-size: 2rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.use-btn {
-    background-color: orangered;
-    color:white;
-    
-    &:hover { 
-        background-color: #ccc;
-    }
-}
-
-.delivery{  
-    width: 420px;
-    font-size: 1.8rem;
-}
 

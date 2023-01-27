@@ -8,18 +8,20 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Checkout() {
+function Checkout({ total }) {
     return (
         <div className={cx('container')}>
             <div className={cx('order-summary')}>
                 <h1 className={cx('title')}>Thong tin don hang </h1>
                 <div className={cx('total')}>
                     <h2>Total :</h2>
-                    <h2>494.000</h2>
+                    <h2>{total}</h2>
                 </div>
                 <div className={cx('checkout')}>
                     <p>Ban co the nhap ma giam gia o trang thanh toan</p>
-                    <Button className={cx('checkout-btn')}>THANH TOAN</Button>
+                    <Link to="/checkout/items-in-cart">
+                        <Button className={cx('checkout-btn')}>THANH TOAN</Button>
+                    </Link>
                 </div>
             </div>
             <div className={cx('footer')}>
