@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const ShoppingCartContext = createContext({
     items: [],
@@ -82,7 +83,7 @@ export function ShoppingCartProvider({ children }) {
     function getTotalCost() {
         let totalCost = 0;
         cartProducts.map((cartProduct) => {
-            totalCost += cartProduct.quantity * cartProduct.price;
+            totalCost += cartProduct.quantity * parseFloat(cartProduct.price);
         });
 
         return totalCost;

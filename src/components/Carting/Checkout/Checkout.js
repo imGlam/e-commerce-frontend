@@ -25,7 +25,7 @@ function Checkout({ total }) {
                 </div>
             </div>
             <div className={cx('footer')}>
-                <Link className={cx('footer-title')}>
+                <Link className={cx('footer-title')} to="/">
                     Tiep tuc mua hang <FontAwesomeIcon icon={faArrowRight} />
                 </Link>
             </div>

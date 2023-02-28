@@ -2,20 +2,22 @@
     width: 1000px;
     height: 80px;
     background-color: transparent;
-    border-bottom: 1px solid #ccc;
     margin-top: 40px;
 }
 
 .heading-top {
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
+.slogan { 
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+}
+
+.logo { 
+    object-fit: fill;
 }

@@ -1,9 +1,13 @@
 .container {
+    width: 600px;
+    min-height: 600px;
     margin-bottom: 28px;
+    padding: 14px;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255);
 }
 
-.swiper {
-    width: 1000px;
+.swiper-container {
+    width: 550px;
     height: auto;
     background-color: var(--background-color);
 }
@@ -13,7 +17,7 @@
 }
 
 .balo-image {
-    width: 1000px;
-    height: 800px;
-    object-fit: fill;
+    width: 550px;
+    height: 600px;
+    object-fit: cover;
 }

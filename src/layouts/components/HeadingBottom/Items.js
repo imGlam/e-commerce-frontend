@@ -5,24 +5,25 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function Items({ src, title, to, separate }) {
+function Items({ title, to, separate, button }) {
     const classes = cx('items-container', {
         separate,
+        button,
     });
     return (
         <div className={classes}>
-            <Link to={to}>
-                <img className={cx('image')} src={src} alt="image" />
-            </Link>
-            <Link to={to}>
-                <span className={cx('title')}>{title}</span>
-            </Link>
+            {button ? (
+                <button>{title}</button>
+            ) : (
+                <Link className={cx('inner')} to={to}>
+                    <span className={cx('title')}>{title}</span>
+                </Link>
+            )}
         </div>
     );
 }
 
 Items.propTypes = {
-    src: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
 };

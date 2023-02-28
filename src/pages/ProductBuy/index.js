@@ -1,19 +1,20 @@
-import { createContext } from 'react';
+import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ProductDetail from '../../components/ProductDetail';
 
-export const nameContext = createContext();
+export const idContext = createContext();
 
 function ProductBuy() {
-    let { name } = useParams();
+    let { id } = useParams();
 
     return (
-        <nameContext.Provider value={name}>
+        <idContext.Provider value={id}>
             <div>
                 <ProductDetail></ProductDetail>
             </div>
-        </nameContext.Provider>
+        </idContext.Provider>
     );
 }
 

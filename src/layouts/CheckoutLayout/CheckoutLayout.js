@@ -9,8 +9,6 @@ import { ShoppingCartContext } from '../../contexts/ShoppingCartContext';
 const cx = classNames.bind(styles);
 
 function CheckoutLayout({ children }) {
-    const cart = useContext(ShoppingCartContext);
-    const total = cart.getTotalCost();
     return (
         <div className={cx('container')}>
             <div className={cx('content-container')}>
@@ -33,7 +31,7 @@ function CheckoutLayout({ children }) {
                                             <span>Tam tinh</span>
                                         </td>
                                         <td className={cx('second-td')}>
-                                            <span>{total}</span>
+                                            <span>{}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -49,7 +47,7 @@ function CheckoutLayout({ children }) {
                                             <h3>Tong tien</h3>
                                         </td>
                                         <td className={cx('second-td')}>
-                                            <h3>{total}</h3>
+                                            <h3>{}</h3>
                                         </td>
                                     </tr>
                                 </tbody>

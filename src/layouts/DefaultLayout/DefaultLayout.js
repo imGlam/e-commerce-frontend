@@ -18,7 +18,6 @@ function DefaultLayout({ children }) {
                 </div>
                 <div className={cx('header')}>
                     <HeadingTop />
-                    <HeadingBottom />
                 </div>
             </div>
             <div className={cx('content')}>{children}</div>

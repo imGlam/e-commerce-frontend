@@ -1,7 +1,7 @@
 import Product from '../../../components/Product';
 import ProductContainer from '../../../components//ProductsContainer';
 
-function Backpacks() {
+function Top() {
     return (
         <div>
             <ProductContainer name="Backpack">
@@ -58,4 +58,4 @@ function Backpacks() {
     );
 }
 
-export default Backpacks;
+export default Top;

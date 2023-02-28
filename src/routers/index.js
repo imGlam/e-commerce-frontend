@@ -3,12 +3,13 @@ import CheckoutLayout from '../layouts/CheckoutLayout/CheckoutLayout';
 import DefaultLayout from '../layouts/DefaultLayout';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
-import Backpacks from '../pages/Collections/Backpacks';
-import CrossbodyBags from '../pages/Collections/CrossbodyBags';
-import TotesAccessories from '../pages/Collections/TotesAccessories';
-import Wallets from '../pages/Collections/Wallets';
+import Top from '../pages/Collections/Top';
+import Accessories from '../pages/Collections/Accessories';
+import Sneaker from '../pages/Collections/Sneaker';
+import Bottom from '../pages/Collections/Bottom';
 import Home from '../pages/Home';
 import ProductBuy from '../pages/ProductBuy';
+import Vans from '../pages/Collections/Sneaker/Vans';
 
 const publicRoutes = [
     {
@@ -17,27 +18,32 @@ const publicRoutes = [
         layout: DefaultLayout,
     },
     {
-        path: '/collection/backpacks',
-        component: Backpacks,
+        path: '/top',
+        component: Top,
         layout: DefaultLayout,
     },
     {
-        path: '/collection/wallets',
-        component: Wallets,
+        path: '/bottom',
+        component: Bottom,
         layout: DefaultLayout,
     },
     {
-        path: '/collection/tote-accessories',
-        component: TotesAccessories,
+        path: '/sneaker',
+        component: Sneaker,
         layout: DefaultLayout,
     },
     {
-        path: '/collection/crossbody-bags',
-        component: CrossbodyBags,
+        path: '/accessories',
+        component: Accessories,
         layout: DefaultLayout,
     },
     {
-        path: '/product/:name',
+        path: '/sneaker/vans',
+        component: Vans,
+        layout: DefaultLayout,
+    },
+    {
+        path: '/product/:id',
         component: ProductBuy,
         layout: DefaultLayout,
     },

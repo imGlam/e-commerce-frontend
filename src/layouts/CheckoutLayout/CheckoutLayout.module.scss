@@ -24,6 +24,7 @@
 
 .checkout-product-container {
     margin-right: 200px;
+    min-height: 1000px;
 }
 
 .code-discount-container {
@@ -62,6 +63,6 @@
     width: 100%;
     display: flex;
     font-size: 2rem;
-    justify-content: end;
-
+    justify-content: start;
+    
 }

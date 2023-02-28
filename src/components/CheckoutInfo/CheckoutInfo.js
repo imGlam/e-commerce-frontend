@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './CheckoutInfo.module.scss';
 import axios from 'axios';
 
 import Button from '../Button';
+import { ShoppingCartContext } from '../../contexts/ShoppingCartContext';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,9 @@ function CheckoutInfo() {
     const [districts, setDistricts] = useState([]);
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [wards, setWards] = useState([]);
-    const [orderedItems, setOrderedItems] = useState([]);
+    const [orderItems, setOrderItems] = useState([{}]);
+    const [checked, setChecked] = useState(false);
+    const [checked2, setChecked2] = useState(false);
 
     useEffect(() => {
         axios
@@ -41,13 +44,6 @@ function CheckoutInfo() {
         }
     }, [selectedDistrict]);
 
-    useEffect(() => {
-        axios
-            .get(`/api/cart`)
-            .then((res) => setOrderedItems(res.data))
-            .catch((err) => console.error(err));
-    }, []);
-
     return (
         <div className={cx('container')}>
             <Link className={cx('logo')} to="/">
@@ -56,7 +52,7 @@ function CheckoutInfo() {
 
             <h2 className={cx('title')}>Thong tin khach hang</h2>
             <div className={cx('user-info')}>
-                <form method="post" action="/api/orders/create/step_1">
+                <form method="post" action="/orders/add">
                     <div className={cx('input-field')}>
                         <input className={cx('input')} placeholder="Ten cua ban" name="fullName" />
                     </div>
@@ -123,13 +119,44 @@ function CheckoutInfo() {
                             </select>
                         </div>
                     </div>
-
+                    <div className={cx('payment-methods-container')}>
+                        <h2 className={cx('title')}>Phuong thuc thanh toan</h2>
+                        <div
+                            className={cx('by-cash')}
+                            onClick={(e) => {
+                                setChecked(true);
+                                setChecked2(false);
+                            }}
+                        >
+                            <input type="radio" name="payment" value="cash" checked={checked} onChange={(e) => {}} />
+                            <img
+                                className={cx('img')}
+                                src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=4"
+                            />
+                            <span className={cx('span')}>Thanh toan khi nhan hang [COD]</span>
+                        </div>
+                        <div
+                            className={cx('by-credit')}
+                            onClick={(e) => {
+                                setChecked(false);
+                                setChecked2(true);
+                            }}
+                        >
+                            <input type="radio" name="payment" value="credit" checked={checked2} onChange={() => {}} />
+                            <img
+                                className={cx('img')}
+                                src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=4"
+                            />
+                            <span className={cx('span')}>Chuyen khoan </span>
+                        </div>
+                    </div>
+                    
                     <div className={cx('action')}>
                         <Link className={cx('cart')} to="/cart">
                             Gio hang
                         </Link>
                         <Button className={cx('next')} type="submit">
-                            Tiep tuc
+                            HOAN TAT DAT HANG
                         </Button>
                     </div>
                 </form>

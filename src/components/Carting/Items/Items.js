@@ -8,9 +8,7 @@ import styles from './Items.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Items({ quantity,name, image, price, size , id}) {
-    const cart = useContext(ShoppingCartContext);
-
+function Items({ quantity, name, image, price, size, subTotal }) {
     return (
         <div className={cx('container')}>
             <div className={cx('inner')}>
@@ -28,34 +26,17 @@ function Items({ quantity,name, image, price, size , id}) {
                             </td>
                             <td className={cx('td')}>
                                 <div className={cx('quantity-container')}>
-                                    <button
-                                        className={cx('count-btn')}
-                                        onClick={(e) => {
-                                            cart.removeOneFromCart(id);   
-                                        }}
-                                    >
+                                    <button className={cx('count-btn')} onClick={(e) => {}}>
                                         <FontAwesomeIcon className={cx('icon')} icon={faMinus} />
                                     </button>
                                     <input className={cx('input')} value={quantity} onChange={() => {}} />
-                                    <button
-                                        className={cx('count-btn')}
-                                        onClick={(e) => {
-                                            cart.addOneToCart(id);
-                                        }}
-                                    >
+                                    <button className={cx('count-btn')} onClick={(e) => {}}>
                                         <FontAwesomeIcon className={cx('icon')} icon={faPlus} />
                                     </button>
                                 </div>
                             </td>
                             <td className={cx('td')}>
                                 <h2>{price}</h2>
-                            </td>
-                            <td className={cx('td')}>
-                                <div className={cx('total')}>
-                                    <h2>Total :</h2>
-                                    <span className={cx('total-price')}>total</span>
-                                    <FontAwesomeIcon className={cx('trash-icon')} icon={faTrash} />
-                                </div>
                             </td>
                         </tr>
                     </tbody>

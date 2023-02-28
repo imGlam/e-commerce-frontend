@@ -4,10 +4,10 @@ import styles from './Clothing.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Clothing({ src, price, name }) {
+function Clothing({ src, price, id, name }) {
     return (
         <div className={cx('container')}>
-            <Link to={`/product/${name}`}>
+            <Link to={`/product/${id}`}>
                 <img className={cx('image')} src={src} />
             </Link>
             <h1 className={cx('name')}>{name}</h1>

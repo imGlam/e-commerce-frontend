@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyles from './components/GlobalStyles';
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext';
+import { ProductsContextProvider } from './contexts/productsContext';
 import reportWebVitals from './reportWebVitals';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ShoppingCartProvider>
+    // <ShoppingCartProvider>
+    <CookiesProvider>
         <React.StrictMode>
             <GlobalStyles>
                 <App />
             </GlobalStyles>
         </React.StrictMode>
-    </ShoppingCartProvider>,
+    </CookiesProvider>,
+    // </ShoppingCartProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

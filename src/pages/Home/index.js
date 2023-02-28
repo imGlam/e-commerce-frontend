@@ -1,26 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-
-import Clothing from '../../components/Clothing/Clothing';
 import axios from 'axios';
+
+import { ProductsContext } from '../../contexts/productsContext';
+import Clothing from '../../components/Clothing/Clothing';
 
 const cx = classNames.bind(styles);
 
 function Home({}) {
-    const [products, setProducts] = useState([]);
+    const [items, setItems] = useState([]);
     useEffect(() => {
-        axios
-            .get('/api/find')
-            .then((res) => setProducts(res.data))
-            .catch((err) => console.log(err));
+        fetch('products/get')
+            .then((res) => res.json())
+            .then((res) => setItems(res))
+            .catch((err) => console.error(err));
     }, []);
-
     return (
         <div className={cx('container')}>
-            {products.map((product, index) => (
+            {items.map((product, index) => (
                 <div className={cx('inner')} key={index}>
-                    <Clothing name={product.name} price={product.price} src={product.image} to={product.name} />
+                    <Clothing
+                        name={product.name}
+                        price={product.price}
+                        src={product.image}
+                        to={product.name}
+                        id={product.productId}
+                    />
                 </div>
             ))}
         </div>

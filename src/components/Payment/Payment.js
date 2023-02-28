@@ -1,12 +1,29 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Payment.module.scss';
+import { ShoppingCartContext } from '../../contexts/ShoppingCartContext';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
 function Payment() {
+    const cart = useContext(ShoppingCartContext);
     const [checked, setChecked] = useState(false);
     const [checked2, setChecked2] = useState(false);
+
+    useEffect(() => {
+        axios
+            .post('/api/cart/add', {
+                orderItems: [
+                    {
+                        productId: 1,
+                        quantity: 2,
+                    },
+                ],
+            })
+            .then((res) => console.log(res))
+            .catch((err) => console.error(err));
+    }, [cart.items]);
     return (
         <div className={cx('container')}>
             <div className={cx('method-container ')}>
@@ -60,7 +77,7 @@ function Payment() {
                                 className={cx('img')}
                                 src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=4"
                             />
-                            <span className={cx('span')}>Thanh toan khi nhan hang</span>
+                            <span className={cx('span')}>Thanh toan khi nhan hang [COD]</span>
                         </div>
                         <div
                             className={cx('by-credit')}
@@ -76,6 +93,9 @@ function Payment() {
                             />
                             <span className={cx('span')}>Chuyen khoan </span>
                         </div>
+                    </div>
+                    <div className={cx('disabled')}>
+                        <input name="orderedItems" value={cart.items} onChange={() => {}} />
                     </div>
                     <button className={cx('btn')} type="submit">
                         HOAN TAT DAT HANG

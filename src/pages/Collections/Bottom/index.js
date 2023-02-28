@@ -1,7 +1,7 @@
 import Product from '../../../components/Product';
 import ProductContainer from '../../../components/ProductsContainer';
 
-function Wallets() {
+function Bottom() {
     return (
         <div>
             <ProductContainer name="Wallets">
@@ -50,4 +50,4 @@ function Wallets() {
     );
 }
 
-export default Wallets;
+export default Bottom;
